@@ -1,0 +1,146 @@
+@import 'variables';
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@mixin imgContainer($color){
+  background: $color;
+}
+
+@mixin axieId($color){
+  span{
+      color: $color;
+  }
+}
+
+@mixin dataContainer($color){
+  color: $color;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background-color: $black-0;
+  color: #fff;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+}
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: transparent rgba(0,0,0,.5);
+}
+
+// plant
+.plantImgContainer{
+  @include imgContainer($plant)
+}
+.plantAxieId{
+  @include axieId(rgba(175,219,27,0.8));
+}
+
+.plantDataContainer{
+  @include dataContainer(rgba(175,219,27,0.8))
+}
+
+// beast
+.beastImgContainer{
+  @include imgContainer($beast)
+}
+.beastAxieId{
+  @include axieId(rgba(253,176,20, 0.8));
+}
+
+.beastDataContainer{
+  @include dataContainer(rgba(253,176,20, 0.8))
+}
+
+// aqua
+.aquaticImgContainer{
+  @include imgContainer($aquatic)
+}
+.aquaticAxieId{
+  @include axieId(rgba(0,245,248, 0.8));
+}
+
+.aquaticDataContainer{
+  @include dataContainer(rgba(0,245,248, 0.8))
+}
+
+// bird
+.birdImgContainer{
+  @include imgContainer($bird)
+}
+.birdAxieId{
+  @include axieId(rgba(250,89,160, 0.8));
+}
+
+.birdDataContainer{
+  @include dataContainer(rgba(250,89,160, 0.8))
+}
+
+// bug
+.bugImgContainer{
+  @include imgContainer($bug)
+}
+.bugAxieId{
+  @include axieId(rgba(255,67,62, 0.8));
+}
+
+.bugDataContainer{
+  @include dataContainer(rgba(255,67,62, 0.8))
+}
+
+// reptile
+.reptileImgContainer{
+  @include imgContainer($reptile)
+}
+.reptileAxieId{
+  @include axieId(rgba(153,103,251, 0.8));
+}
+
+.reptileDataContainer{
+  @include dataContainer(rgba(153,103,251, 0.8))
+}
+
+// mech
+.mechImgContainer{
+  @include imgContainer($mech)
+}
+.mechAxieId{
+  @include axieId(rgba(113,131,227, 0.8));
+}
+
+.mechDataContainer{
+  @include dataContainer(rgba(113,131,227, 0.8))
+}
+
+// dusk
+.duskImgContainer{
+  @include imgContainer($dusk)
+}
+.duskAxieId{
+  @include axieId(rgba(2,159,174, 0.8));
+}
+
+.duskDataContainer{
+  @include dataContainer(rgba(2,159,174, 0.8))
+}
+
+// dawn
+.dawnImgContainer{
+  @include imgContainer($dawn)
+}
+.dawnAxieId{
+  @include axieId(rgba(113,137,142, 0.8));
+}
+
+.dawnDataContainer{
+  @include dataContainer(rgba(113,137,142, 0.8))
+}

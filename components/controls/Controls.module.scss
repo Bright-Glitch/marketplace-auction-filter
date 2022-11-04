@@ -1,0 +1,60 @@
+@import '/styles/variables';
+
+@mixin container{
+    position: relative;
+    height: 50vh;
+    width: 100%;
+    position: fixed;
+    border-top: 3px solid $black-1;
+    background-color: $black-0;
+}
+
+@mixin imgC{
+    display: flex;
+    justify-content: center;
+    position: fixed;
+
+    img{
+    cursor: pointer;
+    transition: all 0.1s;
+
+        &:hover{
+            
+            filter:drop-shadow(0 0 12px rgba(142, 151, 168, 0.2))
+                    brightness(1.1);
+        }
+    }
+}
+
+.container{
+    @include container;
+    bottom: 0;
+    transition: bottom 0.4s;
+}
+
+.containerClosed{
+    @include container;
+    bottom: -50vh;
+    transition: bottom 0.4s;
+}
+
+.imgBox{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center
+}
+
+.imgC{
+    @include imgC();
+    bottom: calc(50vh - 22px);
+    transform: rotate(-90deg);
+    transition: all 0.4s;
+}
+
+.imgCClosed{
+    @include imgC();
+    bottom: -19px;
+    transform: rotate(90deg);
+    transition: all 0.4s;
+}
