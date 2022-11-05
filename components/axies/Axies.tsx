@@ -14,7 +14,16 @@ type Props = {
 
 const Axies = ({ axieDetails, timeLeft, ETHPrice }: Props) => {
 
+  const [copied, setCopied] = useState<string>('')
 
+  const copy = (id: any, e: React.MouseEvent)=>{
+    e.preventDefault()
+    if(id){
+      navigator.clipboard.writeText(id.toString())
+      setCopied(id.toString())
+      setTimeout(()=>setCopied(''),1000)
+    }
+  }
 
   return (
     <div className={s.container}>
@@ -22,14 +31,19 @@ const Axies = ({ axieDetails, timeLeft, ETHPrice }: Props) => {
         Object.values(axieDetails).map((item, index)=>(
           <a href={`https://app.axieinfinity.com/marketplace/axies/${item.id}`} target="_blank" rel="noreferrer" key={index} className={s.axieContainer} >
             <div className={item.class.toLowerCase() + "ImgContainer " + s.imgContainer}>
-              <div className={item.class.toLowerCase() + "AxieId " + s.axieId} >
+
+              <div onClick={(e)=>copy(item.id, e)} className={item.class.toLowerCase() + "AxieId " + s.axieId} >
                 <Image src={`/classes/${item.class.toLowerCase()}.png`} width={20} height={20} alt='axie' />
                 <span> 
-                  #{ item.id } 
+                  #{ item.id }
                 </span>
+                <div className={copied == item.id ? s.copied : s.copiedFalse}>Copied!</div>
               </div>
+
               <Image src={`https://axiecdn.axieinfinity.com/axies/${item.id}/axie/axie-full-transparent.png`} width={200} height={150} alt='axie' />
+
             </div>
+
             <div className={item.class.toLowerCase() + "DataContainer " + s.dataContainer}>
 
               <div className={s.info}>

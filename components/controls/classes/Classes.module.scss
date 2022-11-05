@@ -1,0 +1,32 @@
+.container{
+}
+
+.classContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+}
+
+.class{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 130px;
+    padding: 5px 5px;
+    user-select: none;
+    cursor: pointer;
+
+    border-radius: 8px;
+    border: 1px solid #282c34;
+    transition: all .12s ease;
+
+    &:hover{
+        background-color: #1d2025;
+        box-shadow: 0 0 20px #1d2025;
+    }
+
+}
