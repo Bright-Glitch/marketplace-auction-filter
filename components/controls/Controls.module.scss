@@ -1,26 +1,30 @@
 @import '/styles/variables';
 
 @mixin container{
-    position: relative;
     z-index: 1;
-    height: 50vh;
-    width: 100%;
+    height: 100%;
+    top: 0;
+    width: 90vw;
     position: fixed;
-    border-top: 3px solid $black-1;
+    border-right: 3px solid $black-1;
     background-color: $black-0;
+    overflow-y: auto;
 
     padding: 30px 60px;
+    transition: left 0.2s;
 }
 
 @mixin imgC{
     display: flex;
     justify-content: center;
     position: fixed;
+    top: calc(50vh - 24.5px);
     z-index: 10;
+    transition: left 0.2s, transform 0.2s;
 
     img{
     cursor: pointer;
-    transition: all 0.1s;
+    transition: left 0.1s;
 
         &:hover{
             
@@ -32,33 +36,47 @@
 
 .container{
     @include container;
-    bottom: 0;
-    transition: bottom 0.4s;
+    left: 0;
 }
 
 .containerClosed{
     @include container;
-    bottom: -50vh;
-    transition: bottom 0.4s;
+    left: -90vw;
 }
 
-.imgBox{
-    position: relative;
+.controlsBox{
     width: 100%;
-    display: flex;
-    justify-content: center
 }
+
+
 
 .imgC{
     @include imgC();
-    bottom: calc(50vh - 22px);
-    transform: rotate(-90deg);
-    transition: all 0.4s;
+    left: calc(90vw - 22px);
+    transform: rotate(0deg);
 }
 
 .imgCClosed{
     @include imgC();
-    bottom: -19px;
-    transform: rotate(90deg);
-    transition: all 0.4s;
+    left: -19px;
+    transform: rotate(180deg);
+}
+
+.btn{
+    background:linear-gradient(104.04deg,#ff6c6c,#ff4040);
+    color: rgb(255, 255, 255);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    border: 0;
+    font-size: 14px;
+    height: 40px;
+    line-height: 20px;
+    padding: 0 16px;
+    width: 200px;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &:hover{
+        background:#ff4040;
+    }
 }

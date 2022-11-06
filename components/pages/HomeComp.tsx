@@ -7,20 +7,20 @@ import Handler from '../pageHandler/Handler'
 import { PuffLoading } from '../puff-loading/PuffLoading'
 import { partsAtom, classesAtom } from '../../atoms/atoms'
 import { useAtom } from 'jotai'
-
+import s from './HomeComp.module.scss'
 
 const HomeComp = () => {
     
   const [intervalId, setIntervalId] = useState<NodeJS.Timer>()
-  const [axieDetails, setAxieDetails] = useState<object>({})
+  const [axieDetails, setAxieDetails] = useState<any[]>([])
   const [totalAxies, setTotalAxies] = useState<number>(0)
   const [ETHPrice, setETHPrice] = useState<number>(0)
   const [timeLeft, setTimeLeft] = useState<string[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [currentPage, setCurrentPage] = useState<number>(0)
+  const [currentPage, setCurrentPage] = useState<number>(1)
   const [controller, setController] = useState<AbortController | null>()
 
- const [parts] = useAtom(partsAtom) 
+ const [parts] = useAtom(partsAtom)
  const [classes] = useAtom(classesAtom)
 
   const callData = async(from: number | 0, parts: string[] | null, classes: string[] | null)=>{
@@ -34,7 +34,7 @@ const HomeComp = () => {
     setController(controller_)
 
     clearInterval(intervalId)
-    setAxieDetails({})
+    setAxieDetails([])
     setIsLoading(true)
 
     const getETH = async()=>{
@@ -53,7 +53,6 @@ const HomeComp = () => {
       const results_ = Object.values(axie_.results).filter((item: any)=>{
         return item.order.timeLeft != 0
       })
-  
       const timeLeft_ = Object.values(results_).map((item: any)=>{
         return getTime(item.order.timeLeft)
       })
@@ -79,6 +78,8 @@ const HomeComp = () => {
 
     callData(0, parts, classes)
 
+    setCurrentPage(1)
+
     console.log("called")
 
     return ()=> clearInterval(intervalId)
@@ -86,16 +87,16 @@ const HomeComp = () => {
   }, [])
 
   const handleNext = ()=>{
-    if(currentPage + 100 < totalAxies / 100){
-      callData(currentPage + 100, null, null)
-      setCurrentPage(prev => prev + 100)
+    if(currentPage < totalAxies / 100){
+      callData(currentPage * 100, parts, classes)
+      setCurrentPage(prev => prev + 1)
     }
   }
 
   const handlePrev = ()=>{
-    if(currentPage != 0){
-      callData(currentPage - 100, null, null)
-      setCurrentPage(prev => prev - 100)
+    if(currentPage > 1){
+      callData(currentPage / 100, parts, classes)
+      setCurrentPage(prev => prev - 1)
     }
   }
 
@@ -103,7 +104,8 @@ const HomeComp = () => {
     <>
       { isLoading ? (<PuffLoading/>) : ( <></> ) }
       <Axies axieDetails={axieDetails} timeLeft={timeLeft} ETHPrice={ETHPrice} />
-      <Controls/>
+      <Controls callData={callData}  setCurrentPage={setCurrentPage}/>
+      { axieDetails.length == 0 && !isLoading && ( <div className={s.nothing} >Nothing found here z.z</div> ) }
       <Handler totalAxies={totalAxies} isLoading={isLoading} currentPage={currentPage} setCurrentPage={setCurrentPage} handlePrev={handlePrev} handleNext={handleNext} />
     </>
   )

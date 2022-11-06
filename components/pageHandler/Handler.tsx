@@ -17,15 +17,15 @@ const Handler = ({ totalAxies, currentPage, handlePrev, handleNext, isLoading }:
   return (
     <div className={s.container} style={ isLoading ? { display:'none' } : {  } } >
 
-        <div onClick={handlePrev} className={ currentPage == 0 ? s.arrowNone : s.arrow }>
+        <div onClick={handlePrev} className={ currentPage == 1 ? s.arrowNone : s.arrow }>
             <Image src={leftArrow} width={24} height={24} alt='left arrow'/>
         </div>
 
         <span>
-            { currentPage / 100 + " / " + Math.ceil(totalAxies / 100) }
+            { currentPage + " / " + Math.ceil(totalAxies / 100) }
         </span>
 
-        <div onClick={handleNext} className={ currentPage + 100 < totalAxies / 100 ? s.arrow : s.arrowNone }>
+        <div onClick={handleNext} className={ currentPage < totalAxies / 100 ? s.arrow : s.arrowNone }>
             <Image src={rightArrow} width={24} height={24} alt='right arrow'/>
         </div>
 

@@ -6,7 +6,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 20px;
     width: 100%;
 }
 
@@ -26,7 +26,18 @@
 
     &:hover{
         background-color: #1d2025;
-        box-shadow: 0 0 20px #1d2025;
+        box-shadow: 0 0 20px #ff4040;
+        color: #ff4040;
     }
 
+}
+
+.input{
+    display: none;
+}
+
+.input[type="checkbox"]:checked + .class{
+    background-color: #1d2025;
+    box-shadow: 0 0 20px #ff4040;
+    color: #ff4040;
 }

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import s from './Axies.module.scss'
 import eth from '../../public/eth.png'
 
