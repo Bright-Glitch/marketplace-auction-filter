@@ -12,7 +12,7 @@ import s from './HomeComp.module.scss'
 const HomeComp = () => {
     
   const [intervalId, setIntervalId] = useState<NodeJS.Timer>()
-  const [axieDetails, setAxieDetails] = useState<any[]>([])
+  const [axieDetails, setAxieDetails] = useState<object>([])
   const [totalAxies, setTotalAxies] = useState<number>(0)
   const [ETHPrice, setETHPrice] = useState<number>(0)
   const [timeLeft, setTimeLeft] = useState<string[]>([])
@@ -88,14 +88,14 @@ const HomeComp = () => {
 
   const handleNext = ()=>{
     if(currentPage < totalAxies / 100){
-      callData(currentPage * 100, parts, classes)
+      callData((currentPage + 1) * 100, parts, classes)
       setCurrentPage(prev => prev + 1)
     }
   }
 
   const handlePrev = ()=>{
     if(currentPage > 1){
-      callData(currentPage / 100, parts, classes)
+      callData((currentPage - 1) * 100, parts, classes)
       setCurrentPage(prev => prev - 1)
     }
   }
@@ -105,7 +105,7 @@ const HomeComp = () => {
       { isLoading ? (<PuffLoading/>) : ( <></> ) }
       <Axies axieDetails={axieDetails} timeLeft={timeLeft} ETHPrice={ETHPrice} />
       <Controls callData={callData}  setCurrentPage={setCurrentPage}/>
-      { axieDetails.length == 0 && !isLoading && ( <div className={s.nothing} >Nothing found here z.z</div> ) }
+      { Object.values(axieDetails).length == 0 && !isLoading && ( <div className={s.nothing} >Nothing found here z.z</div> ) }
       <Handler totalAxies={totalAxies} isLoading={isLoading} currentPage={currentPage} setCurrentPage={setCurrentPage} handlePrev={handlePrev} handleNext={handleNext} />
     </>
   )
