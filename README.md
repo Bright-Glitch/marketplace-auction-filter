@@ -10,9 +10,9 @@
 
 **2. Install Node.js on your computer**
 
-[Official Node.js site:](https://nodejs.org/en/)
+Official Node.js site:[https://nodejs.org/en/](https://nodejs.org/en/)
 
-**3. Run your terminal, you can find it writing cmd on your PC search bar**
+**3. Open your terminal, you can find it writing cmd on your PC search bar**
 
 Now you'll need to direct your terminal to the project folder, you can use this comands:
 
