@@ -35,13 +35,13 @@ const Classes = (props: Props) => {
         <div className={s.classContainer} >
         {
             classList.map((item, i)=>(
-              <>
+              <span key={i}>
                 <input id={item[0].toString()} className={s.input} type='checkbox' onChange={(e)=> handleChecked(item[0].toString(), e)} />
                 <label htmlFor={item[0].toString()} className={s.class} key={i}>
                     <Image src={item[1]} width={30} height={30} quality={100} alt={item[0].toString()} />
                     <span> { item[0].toString() } </span>
                 </label>
-              </>
+              </span>
             ))
         }
         </div>

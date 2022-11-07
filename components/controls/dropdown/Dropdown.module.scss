@@ -1,0 +1,119 @@
+.container{
+
+}
+
+.searchBarContainer{
+    position: relative;
+    width: 300px;
+    height: 40px;
+
+    input{
+        background-color: transparent;
+        border: 0;
+        outline: none;  
+        padding: 4px 20px;
+        padding-right: 40px;
+        width: 300px;
+        height: 40px;
+        border-radius: 8px;
+        background-color: #1c1f25;
+        border: 2px solid #5b6372;
+        color: #fff;
+
+        font-size: 15px;
+    
+        &:focus{
+            border: solid 2px rgb(255, 64, 64, 0.8);
+            box-shadow: 0 0 12px rgb(255, 64, 64, 0.55);
+        }
+
+        &::selection{
+            color: #fff;
+            background-color: rgb(255, 64, 64, 0.8);
+        }
+    }
+}
+
+@import '/styles/variables';
+
+.imgContainer{
+    position: absolute;
+    right:14px;
+    top: 10px;
+}
+
+.filterContainer{
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    border-radius: 8px;
+    margin-top: 7px;
+    padding: 8px 8px;
+
+    background-color: $black-0;
+    border: 2px solid #5b6372;
+    overflow-y: scroll;
+}
+
+.unfocused{
+    display: none;
+}
+
+.filteredPart{
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 0 8px;
+    border-radius: 8px;
+
+    &:hover{
+        background-color: #262931;
+    }
+
+    user-select: none;
+}
+
+.selectedContainer{
+    width: 300px;
+    height: 200px;
+    border-radius: 8px;
+    margin-top: 7px;
+    background-color: #1c1f25;
+    border: 2px solid #5b6372;
+}
+
+.selectedPart{
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 0 8px;
+    border-radius: 8px;
+
+    &:hover{
+        background-color: #262931;
+    }
+
+    user-select: none;
+}
+
+.delete{
+    margin-left: auto;
+    margin-top: 3px;
+}
+
+@media (max-width:500px){
+    .searchBarContainer{
+        width: 200px;
+        input{
+            width: 200px;
+        }
+    }
+
+    .selectedContainer{
+        width: 200px;
+    }
+}

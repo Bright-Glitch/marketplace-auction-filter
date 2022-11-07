@@ -47,19 +47,22 @@ const HomeComp = () => {
 
       if(typeof axie_ == 'undefined' ){
         return
+      } else {
+
+        setIsLoading(false)
+        const results_ = Object.values(axie_.results).filter((item: any)=>{
+          return item.order.timeLeft != 0
+        })
+        const timeLeft_ = Object.values(results_).map((item: any)=>{
+          return getTime(item.order.timeLeft)
+        })
+    
+        setTotalAxies(axie_.total)
+        setTimeLeft(timeLeft_)
+        setAxieDetails(results_)
+        
       }
 
-      setIsLoading(false)
-      const results_ = Object.values(axie_.results).filter((item: any)=>{
-        return item.order.timeLeft != 0
-      })
-      const timeLeft_ = Object.values(results_).map((item: any)=>{
-        return getTime(item.order.timeLeft)
-      })
-  
-      setTotalAxies(axie_.total)
-      setTimeLeft(timeLeft_)
-      setAxieDetails(results_)
     }
     
     await getETH()
@@ -68,7 +71,7 @@ const HomeComp = () => {
     const intID_ = setInterval(()=>{
       getETH()
       getAxiesDetails()
-    }, 1000)
+    }, 1600)
 
     setIntervalId(intID_)
 

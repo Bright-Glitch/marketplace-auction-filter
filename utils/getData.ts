@@ -59,8 +59,8 @@ export const getAxies = async ({ from, sort, parts, bodyShapes, classes, control
 }
 
 export const getETHPrice = async () =>{
-  // const data = await axios.post('/api/getToken')
-  // return data.data.data.exchangeRate.eth.usd
-  const price = await axios.get('https://api.coingecko.com/api/v3/coins/ethereum')
-  return price.data.market_data.current_price.usd
+  const data = await axios.post('/api/getToken')
+  return data.data.data.exchangeRate.eth.usd
+  // const price = await axios.get('/api/getToken')
+  // return price.data.market_data.current_price.usd
 }

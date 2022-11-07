@@ -6,6 +6,7 @@ import Classes from './classes/Classes'
 import { classesAtom, partsAtom } from '../../atoms/atoms'
 import { useAtom } from 'jotai'
 import Dropdown from './dropdown/Dropdown'
+import partsJSON from '../../parts/key.json'
 
 type Props = {
   callData:(from: number | 0, parts: string[] | null, classes: string[] | null)=>void,
@@ -18,6 +19,8 @@ const Controls = ({ callData, setCurrentPage }: Props) => {
   const [open, setOpen] = useState<boolean>(false)
   const [classes, setClasses] = useAtom(classesAtom)
   const [parts, setParts] = useAtom(partsAtom)
+
+  const partsKeys = ['eyes','back','ears','mouth','horn','tail']
 
   useEffect(() => {
     //Prevent animation on elements sizes when resizing the window
@@ -74,8 +77,16 @@ const Controls = ({ callData, setCurrentPage }: Props) => {
       <div ref={menuRef} style={isResize ? {transition: 'none'} : {} } className={ open ? s.container : s.containerClosed} >
         <div className={s.controlsBox}>
         <Classes/>
-        <Dropdown key='' />
+        <div className={s.partsContainer}>
+          {
+            partsKeys.map((item, id)=>(
+              <Dropdown key={id} part={item} data={partsJSON.items.parts} />
+            ))
+          }
+        </div>
+        <span className={s.btnContainer}>
         <button onClick={handleSearch} className={s.btn} >Search Axie \(^▿^)/</button>
+        </span>
         </div>
       </div>
       <div className={ open ? s.background : s.backgroundClosed}></div>

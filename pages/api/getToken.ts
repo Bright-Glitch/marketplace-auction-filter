@@ -19,3 +19,12 @@ export default function handler(req: any, res: any): Promise<void>{
   })
 
 }
+
+// export default function handler(req: any, res: any): Promise<void>{
+
+//   return axios.get('https://api.coingecko.com/api/v3/coins/ethereum')
+//   .then((data)=>{
+//     res.status(200).json(data.data)
+//   }).catch(e=>console.log(e))
+
+// }
