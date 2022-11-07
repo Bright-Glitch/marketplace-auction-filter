@@ -116,8 +116,8 @@ const handleDelete = (deletedPart: objectParts)=>{
             Object.values(filterParts)?.map((item, id)=>(
               <div key={id} className={s.filteredPart} onClick={()=>handleSelect(item)} >
               <Image src={`/part-icon-svg/${
-                classList?.filter(value=> item?.sample.includes(value[0]?.toString().toLowerCase()))?.[0]?.[0]
-              }-${part}.svg`} width={25} height={25} alt='' />
+                classList?.filter(value=> item?.sample.includes(value[0]?.toString().toLowerCase()))?.[0]?.[0].toString().toLowerCase()
+              }-${part}.svg`} blurDataURL='blur' width={25} height={25} alt='' />
                 { item?.key.replace('-',' ').replace('-',' ') }
               </div>
             ))
@@ -129,8 +129,8 @@ const handleDelete = (deletedPart: objectParts)=>{
           selectedParts?.map((item, id)=>(
             <div key={id} className={s.selectedPart} onClick={()=>handleDelete(item)} >
               <Image src={`/part-icon-svg/${
-                classList?.filter(value=> item?.sample.includes(value[0]?.toString().toLowerCase()))?.[0]?.[0]
-              }-${part}.svg`} width={25} height={25} alt='' />
+                classList?.filter(value=> item?.sample.includes(value[0]?.toString().toLowerCase()))?.[0]?.[0].toString().toLowerCase()
+              }-${part}.svg`} blurDataURL='blur' width={25} height={25} alt='' />
                 { item?.key.replace('-',' ').replace('-',' ') }
                 <span className={s.delete} >
               <Image src='/delete.svg' width={15} height={15} alt='' />
