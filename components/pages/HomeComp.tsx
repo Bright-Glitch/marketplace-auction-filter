@@ -45,7 +45,7 @@ const HomeComp = () => {
     const getAxiesDetails = async()=>{
       const axie_ = await getAxies({ from, sort: "PriceAsc", parts, bodyShapes: null, classes, controller: controller_ })
 
-      if(typeof axie_ == 'undefined' ){
+      if(typeof axie_ == 'undefined' ||  typeof axie_.results == 'undefined'){
         return
       } else {
 
