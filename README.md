@@ -30,6 +30,8 @@ Once the installation is finished run  'pnpm run dev' in your terminal and press
 
 Leave the terminal running in the background, you'll be able to access the Marketplace filter site on this URL: [http://localhost:3000/](http://localhost:3000/)
 
+to stop the site running go to you terminal and press 'ctl + C' and close it
+
 ### If you already followed this steps, next time you will only need to go to the path of the project in your terminal and run 'pnpm run dev' and press enter
 
 If you encounter any issue or error you can reach me out on discord.
