@@ -71,7 +71,7 @@ const HomeComp = () => {
     const intID_ = setInterval(()=>{
       getETH()
       getAxiesDetails()
-    }, 1600)
+    }, 5000)
 
     setIntervalId(intID_)
 
@@ -82,8 +82,6 @@ const HomeComp = () => {
     callData(0, parts, classes)
 
     setCurrentPage(1)
-
-    console.log("called")
 
     return ()=> clearInterval(intervalId)
     
